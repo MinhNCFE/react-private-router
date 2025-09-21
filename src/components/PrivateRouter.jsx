@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 function PrivateRouter() {
-  // Giả lập trạng thái login
-  const [isAuth] = useState(false); // đổi thành true để test cho vào Account
+  const isAuth = localStorage.getItem("isAuth") === "true";
 
-  return isAuth ? <Outlet /> : <Navigate to="/login" />;
+  return isAuth ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
 export default PrivateRouter;
